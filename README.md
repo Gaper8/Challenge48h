@@ -64,7 +64,7 @@ L’agent IA repose sur un modèle NLP qui analyse le contenu des tweets et extr
         "inconfort": Un score de 0 à 100, il permet de savoir à quel point le problème de l'utilisateur lui créer des problèmes.
         "urgence": true / false, permet de savoir si c'est une urgence grâce à des mots clés.
 
-    2. Les prompts ou fine-tuning réalisés :
+    2. Les prompts tuning réalisés :
 
 Voici le prompt que nous utilisons.
 
