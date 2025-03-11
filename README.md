@@ -51,6 +51,9 @@ L’agent IA repose sur un modèle NLP qui analyse le contenu des tweets et extr
 
 Les prompts ou fine-tuning réalisés :
 
+![image](https://github.com/user-attachments/assets/46461113-b011-4cdc-9e00-07efe24031d0)
+
+
 Voici le prompt que nous utilisons.
 
 You are an NLP agent for analyzing tweets.
