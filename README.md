@@ -23,6 +23,8 @@ Pour notre Projet, nous avons choisie d'utiliser 5 kpis les voicis :
 
 - Total des tweets, nous l'avons choisi pour permettre d'avoir une vision d'ensemble.
 - Satisfaction moyenne, par rapport à la colonne inconfort. Nous choisissons ce kpi pour permettre d'avoir une vue d'ensemble de la satisfaction des utilisateurs.
+- Répartition des tweets par type de problème. Combien de tweets concernent la facturation, Gaz, Electricité, Contrat, Autre etc.
+- Taux de tweets résolus. Affiche les tweets ou le problème a été résolu et non résolu.
 - Taux de tweet positif, negatif et neutre. Ce kpi permettra aussi d'avoir une vue plus global sur le nombre d'avis positif ou négatif.
 - Nombre de tweets par jour/semaine/mois. Nous avons choisi ce kpi pour pouvoir visualiser l'ensemble des tweets envoyés chaque jour, chaque semaine et chaque mois.
 - Fréquence des mentions des comptes Engie. Ce kpi permettra d'avoir une classification de quels comptes engine est le plus et le moins mentionné par les utilisateurs.
