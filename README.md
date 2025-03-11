@@ -1,43 +1,58 @@
 Challenge 48h : Analyse des Tweets Clients d'Engie et Paramétrage d'Agents IA
 
-Introduction
+🌟 Introduction
 
-Notre Projet à été réalisé dans le cadre du Challenge 48h. Dans ce projet nous avons analyser plus de 500 tweets envoyés par des utilisateurs à engine. Notre premier objectif à été d'extraire de nettoyer les données, pour récupérer seulement les plus importantes. Ensuite, nous avons rajoutés des colonnes grâce à l'ia qui a classifié les tweets selon les sentiments, le niveau d'inconfort et les catégories de chaque tweets. Nous avons aussi conçu un tableau de bord pour permettre la visualisation des données.
+Ce projet a été réalisé dans le cadre du Challenge 48h. Nous avons analysé plus de 500 tweets envoyés par des utilisateurs à Engie.
 
-Méthodologie
+Nos objectifs principaux étaient :
+
+- Nettoyer et extraire les données essentielles.
+
+- Classifier les tweets selon leur sentiment, niveau d'inconfort et catégorie grâce à une IA.
+
+- Concevoir un tableau de bord interactif pour la visualisation des données.
+
+📝 Méthodologie
 
 Traitement des données : 
 
-Dans cette partie, nous avons fait le choix de changer le format de la date. Le format passe en J/M/A avec l'heure.
-Ensuite pour ce qui est du nettoyage nous avons fait le choix d'enlever les colonnes : 
+Dans cette partie, nous avons fait le choix de changer le format de la date. Le format passe en JJ/MM/AAAA avec l'heure.
 
-id : Elle ne nous était pas utile pour l'analyse des tweets et le rendu.
+Pour le nettoyage nous avons fait le choix d'enlever les colonnes : 
 
-screen_name : Elle ne nous était pas utile pour l'analyse des tweets et le rendu.
+- id ❌ (inutile pour l'analyse des tweets)
 
-name : Elle ne nous était pas utile pour l'analyse des tweets et le rendu.
+- screen_name ❌ (inutile pour l'analyse des tweets)
+
+- name ❌ (inutile pour l'analyse des tweets)
 
 Les KPI : 
 
-Pour notre Projet, nous avons choisie d'utiliser 5 kpis les voicis : 
+Nous avons défini 7 KPI pour suivre et analyser les tweets :
 
-- Total des tweets, nous l'avons choisi pour permettre d'avoir une vision d'ensemble.
+- Total des tweets. Vision d'ensemble du volume de tweets.
 - Satisfaction moyenne, par rapport à la colonne inconfort. Nous choisissons ce kpi pour permettre d'avoir une vue d'ensemble de la satisfaction des utilisateurs.
 - Répartition des tweets par type de problème. Combien de tweets concernent la facturation, Gaz, Electricité, Contrat, Autre etc.
-- Taux de tweets résolus. Affiche les tweets ou le problème a été résolu et non résolu.
-- Taux de tweet positif, negatif et neutre. Ce kpi permettra aussi d'avoir une vue plus global sur le nombre d'avis positif ou négatif.
-- Nombre de tweets par jour/semaine/mois. Nous avons choisi ce kpi pour pouvoir visualiser l'ensemble des tweets envoyés chaque jour, chaque semaine et chaque mois.
-- Fréquence des mentions des comptes Engie. Ce kpi permettra d'avoir une classification de quels comptes engine est le plus et le moins mentionné par les utilisateurs.
+- Taux de tweets résolus. Affiche le nombre de tweets ou le problème a été résolu et non résolu.
+- Taux de tweet positif, negatif et neutre. Ce kpi permettra aussi d'avoir une vue plus global sur le nombre d'avis positif, négatif ou neutre.
+- Nombre de tweets par jour/semaine/mois. Nous avons choisi ce kpi pour avoir une analyse temporelle.
+- Fréquence des mentions des comptes Engie. Ce kpi permettra de voir quels comptes Engie sont le plus mentionnés.
 
-L'analyse des sentiments : 
+🎭 L'analyse des sentiments : 
 
-Pour réaliser l'analyse des sentiments nous avons rajouté une colonne pour avoir une classification des tweets selon qu'ils étaient Positif, Neutre et Négatif.
+Pour réaliser l'analyse des sentiments nous avons rajouté une colonne "sentiment" avec trois catégories possible : 
+
+😀 Positif
+
+😐 Neutre
+
+😡 Négatif
 
 Pour réaliser cette classification voici comment nous avons fait : 
 
-Nous avons utilisé un agent IA basé sur Mistral pour effectuer une classification automatique des tweets. Il ajoute une colonne sentiment et l'agent Ia choisi en fonction du Tweet si il est Positif, neutre ou négatif.
+Nous avons utilisé un agent IA basé sur Mistral pour effectuer une classification automatique des tweets. Il choisis quel catégorie correspond le mieux au tweet.
 
-Processus de création des agents IA :
+🤖 Processus de création des agents IA :
 
     1. Logique utilisée pour détecter les types de réclamations
 
@@ -49,30 +64,30 @@ L’agent IA repose sur un modèle NLP qui analyse le contenu des tweets et extr
         "inconfort": Un score de 0 à 100, il permet de savoir à quel point le problème de l'utilisateur lui créer des problèmes.
         "urgence": true / false, permet de savoir si c'est une urgence grâce à des mots clés.
 
-Les prompts ou fine-tuning réalisés :
-
-![image](https://github.com/user-attachments/assets/46461113-b011-4cdc-9e00-07efe24031d0)
-
+    2. Les prompts ou fine-tuning réalisés :
 
 Voici le prompt que nous utilisons.
 
-You are an NLP agent for analyzing tweets.
-Return **ONLY a valid JSON** with these attributes:
-
-{{
-    "category": "Facturation / Gaz / Électricité / Contrat / Autre",
-    "sentiment": "Positif / Neutre / Négatif",
-    "resolu": "Oui / Non",
-    "inconfort": A score from 0 to 100,
-    "urgence": true / false
-}}
+        You are an NLP agent for analyzing tweets.
+        Return **ONLY a valid JSON** with these attributes:
+        
+        {{
+            "category": "Facturation / Gaz / Électricité / Contrat / Autre",
+            "sentiment": "Positif / Neutre / Négatif",
+            "resolu": "Oui / Non",
+            "inconfort": A score from 0 to 100,
+            "urgence": true / false
+        }}
 
 Nous affinons progressivement le prompt pour améliorer la précision de la classification. Nous avons testé ce prompt avec différents tweets au début pour voir si l'ia réagissait bien avec des tweets très différents.
 
-Des exemples d’interactions générées par l’agent : 
+    3. Des exemples d’interactions générées par l’agent : 
 
+![image](https://github.com/user-attachments/assets/748513b9-4f04-4a85-934a-d2b39da1e084)
+![image](https://github.com/user-attachments/assets/b26b8cf4-fe7b-4774-8ced-58f679c5dbd2)
+![image](https://github.com/user-attachments/assets/46461113-b011-4cdc-9e00-07efe24031d0)
 
-Technologies : 
+💻 Technologies Utilisées :  
 
 Pour ce projet, pour la visualisation des résultats nous avons décidés d'utiliser Power Bi. Nous l'avons choisi car n'étant pas familiariser avec ces outils, il était plus facile d'accès pour nous, il est plus intéractif.
 
@@ -80,10 +95,11 @@ Notre projet :
 
 Pour éxécuter notre projet, vous allez devoir suivre ces étapes : 
 
-Etape 1 : 
+Etape 1 : 💪 Cloner le répertoire GitHub
 Sur votre ordinateur, cloner notre répot github https://github.com/Gaper8/Challenge48h.git.
 
-Etape 2 :
-installer power Bi.
+Etape 2 : Installation
+🛠 Installer power Bi.
 
-Etape 3: 
+Etape 3 : 📂 Importation
+Prendre le fichier .csv et le fichier engietest.pbix et importer les deux fichier dans Power Bi. Grâce à cette importation vous verrez la visualisation du résultat.
